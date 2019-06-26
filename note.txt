@@ -1,0 +1,72 @@
+1.dataobject:数据对象
+  （1）ProductInfo：商品信息
+  （2）ProductCategory：商品类目
+  （3）OrderMaster：订单主体
+  （4）OrderDetail：订单详情
+  （5）SellerInfo：卖家信息
+
+2.repository:对数据库表进行增删改查操作的接口,类似dao
+  （1）ProductInfoRepository：根据商品状态查询商品信息，0正常，1下架
+  （2）ProductCategoryRepository：根据类目编号查询商品类目
+  （3）OrderMasterRepository：根据买家openid查询订单，并分页
+  （4）OrderDetailRepository：根据订单id查询订单详情
+  （5）SellerInfoRepository：根据卖家openid查询卖家信息
+
+3.service:服务层，调用repository中的方法进行业务逻辑操作
+  （1）ProductServiceImpl：对商品的操作
+        1)根据商品id查询单个商品;
+        2)查询所有在架商品;
+        3)分页查询所有商品;
+        4)保存商品信息;
+        5)加减库存；
+        6)上下架；
+  （2）CategoryServiceImpl:对商品类目的操作
+        1）根据类目id查询商品类目；
+        2）查询所有类目；
+        3）根据类目编号查询所有类目；
+        4）保存类目信息；
+  （3）OrderServiceImpl:对订单的操作
+        1）创建订单；
+        2）查询单个订单；
+        3）分页查询订单列表；
+        4）取消、完结、支付订单；
+  （4）BuyerServiceImpl：对买家的操作
+        1）查询、取消订单；
+  （5）PayServiceImpl：对支付过程的操作
+        1）支付、异步通知、退款
+  （6）SellerServiceImpl:对卖家的操作
+        1）根据卖家openid，查询卖家信息
+
+4.controller:控制器
+    （1）BuyerProductController：买家对商品的操作
+        1）查看商品列表；
+    （2）BuyerOrderController：买家对订单的操作
+        1）创建订单；
+        2）订单列表、订单详情、取消订单；
+    （3）SellerProductController：卖家操作商品
+        1）查看商品列表、商品详情；
+        2）上、下架商品；
+        3）新增、更新商品信息；
+    （4）SellerCategoryController：卖家操作类目
+        1）查看类目列表、详情
+        2）新增、更新类目；
+    （5）SellerOrderController：卖家操作订单
+        1）查看订单列表、详情；
+        2）取消订单、完结订单；
+    （6）SellerUserController：卖家登录登出操作
+    （7）PayController:支付、异步通知
+    （8）WeChatController:微信工作平台、开放平台的授权、获取openid等操作
+
+5.aspect：切面
+    （1）SellerAuthorizeAspect对卖家登录进行拦截
+6.config：配置
+7.constant:常量
+8.dto:数据传输对象，用来做层与层之间的数据传递
+9.enums:枚举
+10.exception:异常
+11.form:表单
+12.handler:处理器
+13.utils:工具
+14.VO:视图对象
+    （1）商品信息视图、商品视图、结果视图
+
