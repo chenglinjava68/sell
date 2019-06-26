@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * @author :xby
  * @date :2019/2/4 15:50
- * @description :微信公众号 */
+ * @description :微信公众号  */
 @Data
 @Component
 @ConfigurationProperties(prefix = "wechat")
